@@ -1,26 +1,25 @@
 import {Component} from 'react';
-
-import User from "../User";
-
+import Balance from '../Balance';
 class App extends Component {
     constructor() {
         super();
         this.state = {
-            name: 'Max',
-            date: new Date(),
-            age: 27
+            balance: 0
         }
+        this.onIncrease = this.onIncrease.bind(this);
+    }
+
+    onIncrease () {
+        this.setState({
+            balance: this.state.balance + 1
+        })
     }
 
     render(){
         return (
             <div>
-              <User/>
-              <User
-              name={this.state.name} 
-              age={this.state.age} 
-              time={this.state.date}/>
-              <User name="John" age="32"/>
+                <Balance balance={this.state.balance}/>
+                <button onClick={this.onIncrease}>Додати 1</button>
             </div>
           )
     }
